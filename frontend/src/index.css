@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #09090F;
+  --bg-secondary: #101019;
+  --bg-card: #15151F;
+  --primary-purple: #8055FF;
+  --secondary-purple: #A78BFA;
+  --accent-blue: #6366F1;
+  --success-green: #23D18B;
+  --primary-text: #F5F3FF;
+  --secondary-text: #9694A8;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+/* Background grid styling */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(128, 85, 255, 0.18) 0%, rgba(99, 102, 241, 0.08) 40%, transparent 70%);
+}
+
+.bg-radial-bottom {
+  background: radial-gradient(circle at 50% 100%, rgba(128, 85, 255, 0.15) 0%, transparent 60%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090F;
+}
+::-webkit-scrollbar-thumb {
+  background: #20202F;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8055FF;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(21, 21, 31, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(9, 9, 15, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Gradient text */
+.text-gradient-purple-pink {
+  background: linear-gradient(135deg, #A78BFA 0%, #8055FF 40%, #E879F9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple-blue {
+  background: linear-gradient(135deg, #8055FF 0%, #6366F1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.handwriting-note {
+  font-family: 'Caveat', cursive;
+  color: #C4B5FD;
+  letter-spacing: 0.5px;
+}
+

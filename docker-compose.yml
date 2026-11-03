@@ -1,0 +1,80 @@
+services:
+  # ── 1. Flask & Machine Learning Backend ──────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: courseiq-backend
+    restart: unless-stopped
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+      - PORT=5000
+      - DATA_DIR=/app/data
+      - GUNICORN_WORKERS=2
+      - GUNICORN_THREADS=4
+      - GUNICORN_TIMEOUT=120
+    volumes:
+      # Persistent named volume for JSON data (user_library.json, search_history.json)
+      - courseiq_data:/app/data
+    networks:
+      - courseiq-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 25s
+
+  # ── 2. React + Vite Frontend (Nginx static delivery) ─────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: courseiq-frontend
+    restart: unless-stopped
+    networks:
+      - courseiq-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:80/"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  # ── 3. Nginx Gateway Reverse Proxy ───────────────────────────────────────────
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: courseiq-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      backend:
+        condition: service_healthy
+      frontend:
+        condition: service_healthy
+    networks:
+      - courseiq-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:80/"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+# ── Persistent Storage Volumes ────────────────────────────────────────────────
+volumes:
+  courseiq_data:
+    name: courseiq_data
+    driver: local
+
+# ── Isolated Internal Network ─────────────────────────────────────────────────
+networks:
+  courseiq-network:
+    name: courseiq-network
+    driver: bridge
+

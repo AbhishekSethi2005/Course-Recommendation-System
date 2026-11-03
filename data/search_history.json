@@ -1,0 +1,99 @@
+[
+  {
+    "id": "search-1",
+    "title": "Machine Learning & AI Courses",
+    "interests": "machine learning, AI applications, neural networks",
+    "skills": ["Python", "SQL", "Data Analysis"],
+    "completed_courses": ["Python for Everybody"],
+    "difficulty": "intermediate",
+    "top_n": 10,
+    "timestamp": "2026-10-31T10:30:00.000Z",
+    "formattedDate": "Oct 31, 2026",
+    "recommendationsCount": 10
+  },
+  {
+    "id": "search-2",
+    "title": "Cloud Computing & DevOps",
+    "interests": "AWS cloud architecture, docker, kubernetes, CI/CD",
+    "skills": ["Linux", "Git", "Docker"],
+    "completed_courses": [],
+    "difficulty": "any",
+    "top_n": 15,
+    "timestamp": "2026-10-28T14:15:00.000Z",
+    "formattedDate": "Oct 28, 2026",
+    "recommendationsCount": 15
+  },
+  {
+    "id": "search-3",
+    "title": "Data Science Learning Path",
+    "interests": "data analysis, pandas, data visualization, statistical modeling",
+    "skills": ["Python", "Excel", "SQL"],
+    "completed_courses": [],
+    "difficulty": "intermediate",
+    "top_n": 10,
+    "timestamp": "2026-10-25T09:40:00.000Z",
+    "formattedDate": "Oct 25, 2026",
+    "recommendationsCount": 10
+  },
+  {
+    "id": "search-4",
+    "title": "Cybersecurity Fundamentals",
+    "interests": "ethical hacking, network security, penetration testing, cryptography",
+    "skills": ["Linux", "Networking"],
+    "completed_courses": [],
+    "difficulty": "beginner",
+    "top_n": 8,
+    "timestamp": "2026-10-20T16:20:00.000Z",
+    "formattedDate": "Oct 20, 2026",
+    "recommendationsCount": 8
+  },
+  {
+    "id": "search-5",
+    "title": "Full Stack Web Development",
+    "interests": "modern web development, React, Node.js, Express, databases",
+    "skills": ["HTML", "CSS", "JavaScript"],
+    "completed_courses": ["CS50"],
+    "difficulty": "beginner",
+    "top_n": 10,
+    "timestamp": "2026-10-16T11:10:00.000Z",
+    "formattedDate": "Oct 16, 2026",
+    "recommendationsCount": 10
+  },
+  {
+    "id": "search-6",
+    "title": "Generative AI & LLMs",
+    "interests": "transformers, large language models, prompt engineering, LangChain",
+    "skills": ["Python", "Machine Learning"],
+    "completed_courses": ["Machine Learning Specialization"],
+    "difficulty": "advanced",
+    "top_n": 10,
+    "timestamp": "2026-10-12T13:45:00.000Z",
+    "formattedDate": "Oct 12, 2026",
+    "recommendationsCount": 10
+  },
+  {
+    "id": "search-7",
+    "title": "Data Engineering Pipelines",
+    "interests": "BigQuery, Apache Spark, Kafka, ETL pipelines",
+    "skills": ["SQL", "Python"],
+    "completed_courses": [],
+    "difficulty": "intermediate",
+    "top_n": 8,
+    "timestamp": "2026-10-08T15:00:00.000Z",
+    "formattedDate": "Oct 8, 2026",
+    "recommendationsCount": 8
+  },
+  {
+    "id": "search-8",
+    "title": "Algorithms & Data Structures",
+    "interests": "sorting, graphs, dynamic programming, algorithmic complexity",
+    "skills": ["Java", "C++"],
+    "completed_courses": [],
+    "difficulty": "intermediate",
+    "top_n": 12,
+    "timestamp": "2026-10-04T18:30:00.000Z",
+    "formattedDate": "Oct 4, 2026",
+    "recommendationsCount": 12
+  }
+]
+

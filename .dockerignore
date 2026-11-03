@@ -1,0 +1,34 @@
+# Git
+.git
+.gitignore
+
+# Environment secrets
+.env
+.env.*
+
+# Python artifacts
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+venv
+env
+
+# Node.js
+frontend/node_modules
+node_modules
+frontend/dist
+
+# Documentation & scratch
+scratch
+*.docx
+image*.png
+test.txt
+*.log
+
+# Docker & CI
+Dockerfile*
+docker-compose*.yml
+nginx
+

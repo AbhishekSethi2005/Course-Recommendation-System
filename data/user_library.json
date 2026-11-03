@@ -1,0 +1,24 @@
+[
+  {
+    "id": "saved-1793635484180",
+    "course_name": "Pandas Python Library for Beginners in Data Science",
+    "organization": "Coursera Project Network",
+    "course_difficulty": "Beginner",
+    "course_rating": 4.4,
+    "reviews": "100K",
+    "duration": "~ 20 hours",
+    "certificate": true,
+    "course_certificate_type": "Certificate",
+    "matchPercentage": 18,
+    "content_score": 0.2238,
+    "skills_score": 0.85,
+    "final_score": 0.1783,
+    "description": "Learn fundamental and applied concepts with structured hands-on projects and guided exercises.",
+    "whyMatches": "Strong content alignment with your interest in \"I want to learn machine learning and build re\" and matches your Beginner preference.",
+    "skills": [
+      "framing  average  pandas  data science  data file  operations management  python libraries  python programming  project mine  project data-science data-analysis"
+    ],
+    "course_url": "https://www.coursera.org/learn/pandas-python-library-beginners-data-science",
+    "savedAt": "2026-11-02T16:04:44.180Z"
+  }
+]
