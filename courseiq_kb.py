@@ -1,6 +1,7 @@
 """
-CourseIQ Centralized Knowledge Base & Intelligent Educational Fallback Engine.
-Provides authoritative platform information (Domain A) and core educational concepts (Domain B).
+CourseIQ Centralized Knowledge Base & Intelligent Platform Q&A Engine.
+Provides authoritative platform information (CourseIQ capabilities, discovery mechanics,
+filtering, saving, and search history).
 """
 
 COURSEIQ_KNOWLEDGE_BASE = {
@@ -40,10 +41,26 @@ COURSEIQ_KNOWLEDGE_BASE = {
     }
 }
 
+
 def get_platform_answer(query: str, current_page: str = None) -> str:
     """Answers CourseIQ platform questions with accurate facts."""
-    q = query.lower()
+    q = query.lower().strip()
 
+    # Combined: What is CourseIQ and how does it recommend courses?
+    if ("what is courseiq" in q or "tell me about courseiq" in q) and ("how" in q and ("recommend" in q or "work" in q)):
+        return (
+            "### CourseIQ Overview & Recommendation Methodology\n\n"
+            "**CourseIQ** is an AI-powered course discovery platform designed to eliminate endless catalog browsing and match learners with courses that precisely fit their goals and skill levels.\n\n"
+            "#### How CourseIQ Recommends Courses:\n"
+            "1. **Natural Language Semantic Matching**: Uses **TF-IDF vectorization** and **Cosine Similarity** to compare your natural-language goals against full course descriptions and syllabi.\n"
+            "2. **Skill Prerequisite Overlap**: Evaluates the skills you already possess against course requirements so you don't repeat familiar basics.\n"
+            "3. **Exclusion of Completed Courses**: Automatically filters out courses you have already completed.\n"
+            "4. **Difficulty Calibration**: Prioritizes courses that match your desired proficiency level (Beginner, Intermediate, or Advanced).\n"
+            "5. **Transparent Match Score**: Generates a percentage score (e.g., 95% Match) and a concise *'Why this matches'* rationale for each recommendation.\n\n"
+            "You can test it out on the **[Discover Courses](/discover)** page!"
+        )
+
+    # General CourseIQ overview
     if any(k in q for k in ["what is courseiq", "about courseiq", "what does courseiq do", "tell me about courseiq"]):
         return (
             "### What is CourseIQ?\n\n"
@@ -56,7 +73,8 @@ def get_platform_answer(query: str, current_page: str = None) -> str:
             "You can head over to **[Discover Courses](/discover)** to try it out!"
         )
 
-    if any(k in q for k in ["how does it recommend", "how does ai recommend", "recommendation work", "algorithm", "match score"]):
+    # Recommendation algorithm details
+    if any(k in q for k in ["how does it recommend", "how does ai recommend", "recommendation work", "recommendation algorithm", "match score"]):
         return (
             "### How CourseIQ Recommends Courses\n\n"
             "CourseIQ uses a multi-factor recommendation pipeline:\n\n"
@@ -67,6 +85,7 @@ def get_platform_answer(query: str, current_page: str = None) -> str:
             "The resulting **Match Score** (e.g. 94% Match) reflects how closely a course aligns with your profile."
         )
 
+    # Discovery workspace instructions
     if any(k in q for k in ["how to discover", "how do i discover", "find courses", "start search", "search courses"]):
         return (
             "### Discovering Courses on CourseIQ\n\n"
@@ -80,7 +99,20 @@ def get_platform_answer(query: str, current_page: str = None) -> str:
             "7. Click **Find My Courses** to let the AI generate your ranked matches!"
         )
 
-    if any(k in q for k in ["save course", "library", "bookmark", "saved courses"]):
+    # Sidebar Filters
+    if any(k in q for k in ["filter", "filters", "how do filters work", "filtering"]):
+        return (
+            "### How Course Filters Work in CourseIQ\n\n"
+            "Once recommendations are generated on the **Results** page, you can refine your matched courses using multi-factor sidebar filters:\n\n"
+            "- **Difficulty Filter**: View courses by Beginner, Intermediate, Advanced, or Mixed levels.\n"
+            "- **Provider / University Filter**: Filter courses by educational platform or offering university.\n"
+            "- **Minimum Rating**: Set threshold ratings (e.g., 4.5★ and above).\n"
+            "- **Duration / Pace**: Narrow down by estimated hours or study intensity.\n\n"
+            "Filters update your recommendation results in real time without having to re-run your search."
+        )
+
+    # Saved courses and library
+    if any(k in q for k in ["save course", "library", "bookmark", "saved courses", "my library"]):
         return (
             "### Managing Saved Courses & My Library\n\n"
             "- **Saving a Course**: On any recommendation card or sample card, click the **Bookmark** or **'Save to Library'** button.\n"
@@ -88,7 +120,8 @@ def get_platform_answer(query: str, current_page: str = None) -> str:
             "- **Managing**: Inside My Library, you can filter by difficulty, rating, or provider, inspect course details, and remove bookmarked courses with 1 click."
         )
 
-    if any(k in q for k in ["history", "previous searches", "past search"]):
+    # Search history
+    if any(k in q for k in ["history", "previous searches", "past search", "search history"]):
         return (
             "### Discovery Search History\n\n"
             "CourseIQ automatically logs your recommendation searches so you can revisit them anytime.\n\n"
@@ -97,15 +130,23 @@ def get_platform_answer(query: str, current_page: str = None) -> str:
             "- You can also clear specific searches or delete past search entries whenever you want."
         )
 
+    # Troubleshooting
     if any(k in q for k in ["troubleshoot", "not loading", "error", "no courses"]):
         return (
             "### Troubleshooting Recommendations\n\n"
-            "If recommendations aren't appearing or seem limited:\n"
+            "If recommendations aren't appearing or seem limited:\n\n"
             "- **Verify Inputs**: Ensure you entered at least one learning interest or selected a topic chip in the Discover form.\n"
             "- **Broaden Filters**: If you are on the Results page, check if strict provider or rating filters are active.\n"
             "- **Completed Courses**: Make sure your completed courses list doesn't exclude all relevant courses in that topic.\n"
             "- **Reset & Retry**: Click **Clear All** on the Discover page to start with a clean slate."
         )
 
-    return None
+    # Platform boundaries (LMS / Certificates)
+    if any(k in q for k in ["certificate", "lms", "learning roadmap", "accreditation", "degree"]):
+        return (
+            "### CourseIQ Scope & Platform Capabilities\n\n"
+            "- **What CourseIQ Is**: An intelligent AI-driven discovery and recommendation platform that matches you to external accredited courses from top universities and platforms.\n"
+            "- **What CourseIQ Is Not**: CourseIQ does not host its own LMS videos, grade assignments, or directly issue degree certificates. When you click a recommended course, you are directed to the host platform (such as Coursera) to enroll."
+        )
 
+    return None

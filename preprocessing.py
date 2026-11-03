@@ -5,10 +5,15 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-# Download required NLTK data
-nltk.download('stopwords', quiet=True)
-nltk.download('wordnet', quiet=True)
-nltk.download('omw-1.4', quiet=True)
+# Download required NLTK data if not already present
+for corpus in ['stopwords', 'wordnet', 'omw-1.4']:
+    try:
+        nltk.data.find(f'corpora/{corpus}')
+    except LookupError:
+        try:
+            nltk.download(corpus, quiet=True)
+        except Exception:
+            pass
 
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))

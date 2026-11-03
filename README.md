@@ -272,3 +272,61 @@ gunicorn
 ## Report
 
 Project report: [Course Recommendation System Report.docx](./Course%20Recommendation%20System%20Report.docx)
+
+
+
+
+Step 1 – Rebuild and update Docker
+Since you've modified chatbot prompts and backend Python files, run:
+docker compose up -d --build backend
+
+
+This rebuilds the backend image and recreates the backend container while keeping your existing frontend and Nginx containers running.
+Step 2 – If you also modified frontend code
+Run this instead to update the complete application:
+docker compose up -d --build --force-recreate
+
+
+This rebuilds and recreates all three services.
+Step 3 – Check container status
+docker compose ps
+
+
+Expected:
+Container	Status
+courseiq-frontend	Healthy
+courseiq-backend	Healthy
+courseiq-nginx	Running
+
+Step 4 – Check backend logs
+docker compose logs -f backend
+
+
+Check for Python errors, OpenAI API errors or chatbot initialization issues.
+
+Press Ctrl + C to exit the logs. Containers will continue running.
+Step 5 – Test CourseIQ
+Open:
+**http://localhost**
+
+Open
+Test these chatbot questions:
+1. What is quantum mechanics?
+2. Explain the law of inertia.
+3. Give me 10 machine learning project ideas.
+4. Explain the Indian Constitution.
+5. What is CourseIQ?
+6. Explain Python decorators.
+7. Ask a follow-up question using "Yes".
+
+
+Since your existing Docker project uses the old Compose project identity, keep using:
+docker compose -p project11-courserecommendationsystem-sla032 up -d
+
+
+When you change backend code:
+docker compose -p project11-courserecommendationsystem-sla032 up -d --build backend
+
+
+When you change frontend code:
+docker compose -p project11-courserecommendationsystem-sla032 up -d --build frontend
